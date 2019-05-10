@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "angular",
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2016
+  },
+  "rules": {
+    "angular/di": 0, // ng-annotate takes care of that
+    "angular/service-name": 0,
+    "angular/log": 0,
+    "angular/timeout-service": 0,
+    "angular/document-service": 0,
+    "angular/window-service": 0,
+    "no-console": "warn"
+  }
+}

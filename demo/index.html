@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html data-ng-app="exampleApp" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Twitter Bootstrap plugin for AngularJS</title>
+	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<!--suppress CssUnusedSymbol -->
+	<style type="text/css">
+		body {
+			font-size: 14px;
+		}
+		.bs-example-tooltip .tooltip {
+			position: relative;
+			display: inline-block;
+			margin: 10px 20px;
+		}
+		h3.page-header, h4.page-header {
+			padding-top: 60px;
+			padding-bottom: 9px;
+			margin: 0 0 20px;
+			border-bottom: 1px solid #eee;
+		}
+		.bs-example-popover .popover {
+			position: relative;
+			z-index: 1;
+			float: left;
+			width: 200px;
+			margin: 20px;
+		}
+		[bs-popover-boundary], [bs-tooltip-boundary] {
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body ng-controller="exampleCtrl">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+	<div class="container" ng-init="navbar=true">
+		<a class="navbar-brand" href="#">AngularJS Bootstrap</a>
+		<button class="navbar-toggler" type="button" ng-click="navbar=!navbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" bs-collapse="navbar">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item" ng-repeat="n in nav">
+					<a class="nav-link" href="#{{n}}">{{n}}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container">
+	<section id="Modal">
+		<h3 class="page-header border-bottom">Modal</h3>
+		<div class="row">
+			<div class="col-md-4">
+				<button class="btn btn-outline-primary btn-lg"
+				   data-ng-click="modal.exampleModal=!modal.exampleModal">Launch demo modal</button>
+				<br/><br/>
+				<div class="radio">
+					<label>
+						<input type="radio" ng-model="modal.backdrop" value="static"/> 'static' backdrop
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" ng-model="modal.backdrop" ng-value="true"/> clickable backdrop
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" ng-model="modal.backdrop" ng-value="false"/> no backdrop
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-model="modal.keyboard"/> keyboard
+					</label>
+				</div>
+				<div class="modal fade" data-bs-modal="modal.exampleModal" data-backdrop="{{modal.backdrop}}"
+					 data-keyboard="{{modal.keyboard}}">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">ExampleModal</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<button type="button" class="btn btn-primary btn-large"
+										ng-click="modal.nestedModal=true">
+									Show nested modal
+								</button>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger" data-ng-click="modal.exampleModal=false">
+									Dismiss
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" data-bs-modal="modal.nestedModal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Nested modal</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+										aria-hidden="true">&times;</span></button>
+							</div>
+							<div class="modal-body">
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger" data-dismiss="modal">Dismiss</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<table class="table table-bordered table-striped js-options-table">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>type</th>
+							<th>default</th>
+							<th>description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>backdrop</td>
+							<td>boolean or the string <code>'static'</code></td>
+							<td>'static'</td>
+							<td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a
+								backdrop
+								which doesn't close the modal on click.
+							</td>
+						</tr>
+						<tr>
+							<td>keyboard</td>
+							<td>boolean</td>
+							<td>true</td>
+							<td>Closes the modal when escape key is pressed</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="4">
+								<small>All option defaults are configurable in 'Modal' provider and can be changed via
+									attributes.
+								</small>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+				<pre>
+&lt;div class="modal fade" <strong>data-bs-modal="modal.exampleModal" data-backdrop="static" data-keyboard="false"</strong>&gt;
+...
+&lt;/div&gt;</pre>
+			</div>
+		</div>
+	</section>
+	<section id="Dropdown">
+		<h3 class="page-header">Dropdown</h3>
+		<div class="row">
+			<div class="col-md-4">
+				<div bs-dropdown="dropdown">
+					<button bs-dropdown-toggle class="btn btn-outline-primary dropdown-toggle">
+						Toggle dropdown
+					</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="#">Action</a></li>
+						<li><a class="dropdown-item" href="#">Another action</a></li>
+						<li><a class="dropdown-item" href="#">Something else here</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<pre>&lt;div <strong>bs-dropdown="dropdown"</strong>&gt;
+	&lt;a <strong>bs-dropdown-toggle</strong> class="btn btn-primary" &gt;Toggle dropdown &lt;span class="caret" &gt;&lt;/span&gt;&lt;/a&gt;
+	&lt;ul class="dropdown-menu"&gt;
+		&lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;</pre>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<a data-ng-click="dropdown=true;$event.stopPropagation()">Show dropdown by binding</a>
+			</div>
+			<div class="col-md-8">
+				<pre>&lt;a <strong>data-ng-click="dropdown=true;$event.stopPropagation()"</strong>&gt;Show dropdown by binding&lt;/a&gt;</pre>
+			</div>
+		</div>
+	</section>
+	<section id="Tooltip">
+		<h3 class="page-header">Tooltip</h3>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Default</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>animation</td>
+					<td>boolean</td>
+					<td>true</td>
+					<td>Apply a CSS fade transition to the tooltip</td>
+				</tr>
+				<tr>
+					<td>delay</td>
+					<td>number | object</td>
+					<td>0</td>
+					<td><p>Delay showing and hiding the tooltip (ms)</p>
+						<p>If a number is supplied, delay is applied to both hide/show</p>
+						<p>Object structure is: <code>delay: {show: 500, hide: 100}</code></p></td>
+				</tr>
+				<tr>
+					<td>html</td>
+					<td>boolean</td>
+					<td>false</td>
+					<td>Allow HTML in the tooltip.</td>
+				</tr>
+				<tr>
+					<td>placement</td>
+					<td>string</td>
+					<td>'bottom'</td>
+					<td><p>How to position the tooltip - top | bottom | left | right | auto.<br>When "auto" is
+						specified, it
+						will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip
+						will display to the left when possible, otherwise it will display right.</p>
+					</td>
+				</tr>
+				<tr>
+					<td>title</td>
+					<td>string</td>
+					<td>''</td>
+					<td><p>Default title value if <code>title</code> attribute isn't present.</p>
+					</td>
+				</tr>
+				<tr>
+					<td>trigger</td>
+					<td>string</td>
+					<td>'hover focus'</td>
+					<td>How tooltip is triggered - click | hover | focus. You may pass multiple triggers;
+						separate them with a space.
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="4">
+						<small>All option defaults are configurable in 'Tooltip' provider and can be changed via
+							attributes.
+						</small>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+		<h4 class="page-header">Static tooltip</h4>
+		<div class="bs-example-tooltip text-center">
+			<bs-tooltip placement="left">Tooltip on left</bs-tooltip>
+			<bs-tooltip placement="top">Tooltip on top</bs-tooltip>
+			<bs-tooltip placement="bottom">Tooltip on bottom</bs-tooltip>
+			<bs-tooltip placement="right">Tooltip on right</bs-tooltip>
+		</div>
+		<pre>&lt;<strong>bs-tooltip placement="left"</strong>&gt;Tooltip on left&lt;/<strong>bs-tooltip</strong>&gt;
+&lt;<strong>bs-tooltip placement="top"</strong>&gt;Tooltip on top&lt;/<strong>bs-tooltip</strong>&gt;
+&lt;<strong>bs-tooltip placement="bottom"</strong>&gt;Tooltip on bottom&lt;/<strong>bs-tooltip</strong>&gt;
+&lt;<strong>bs-tooltip placement="right"</strong>&gt;Tooltip on right&lt;/<strong>bs-tooltip</strong>&gt;</pre>
+
+		<h4 class="page-header">Four directions</h4>
+		<div class="text-center">
+			<button class="btn btn-secondary" bs-tooltip-toggle title="title" placement="left">Title left</button>
+			<button class="btn btn-secondary" bs-tooltip-toggle title="title" placement="right">Title right</button>
+			<button class="btn btn-secondary" bs-tooltip-toggle title="title" placement="top">Title top</button>
+			<button class="btn btn-secondary" bs-tooltip-toggle title="title" placement="bottom">Title bottom</button>
+		</div>
+		<br/>
+		<pre>&lt;span class="btn btn-secondary" <strong>bs-tooltip-toggle title="title" placement="left"</strong>&gt;Title left&lt;/span&gt;
+&lt;span class="btn btn-secondary" <strong>bs-tooltip-toggle title="title" placement="right"</strong>&gt;Title right&lt;/span&gt;
+&lt;span class="btn btn-secondary" <strong>bs-tooltip-toggle title="title" placement="top"</strong>&gt;Title top&lt;/span&gt;
+&lt;span class="btn btn-secondary" <strong>bs-tooltip-toggle title="title" placement="bottom"</strong>&gt;Title bottom&lt;/span&gt;</pre>
+
+		<div class="row">
+			<div class="col-md-4">
+				<h4 class="page-header">Auto placement & boundary element</h4>
+				<p class="help-block">Tooltip will be adjusted to display within boundary element (red border)</p>
+				<div bs-tooltip-boundary>
+					<span class="btn btn-secondary" bs-tooltip-toggle title="title"
+						  data-placement="auto">Title auto</span>
+				</div>
+				<br/>
+				<pre>&lt;div <strong>bs-tooltip-boundary</strong>&gt;
+	&lt;span class="btn btn-secondary"
+		bs-tooltip-toggle title="title"
+		placement="<strong>auto</strong>"&gt;
+		Title auto
+	&lt;/span&gt;
+&lt;/div&gt;</pre>
+			</div>
+			<div class="col-md-8">
+				<h4 class="page-header">Trigger on click with bound html value & remote trigger</h4>
+				<span class="btn btn-secondary" bs-tooltip-toggle="tooltip" title="{{title}}" html="true"
+					  trigger="click">Title on click</span>
+				<input type="text" ng-model="title"/>
+				<span class="btn btn-secondary" ng-click="tooltip=!tooltip">Remote trigger</span>
+				<br/><br/>
+				<pre ng-non-bindable>&lt;span class="btn btn-secondary" bs-tooltip-toggle="tooltip" <strong>title="{{title}}
+						" html="true" trigger="click"</strong>&gt;Title on click&lt;/span&gt;
+&lt;input type="text" <strong>ng-model="title"</strong>/&gt;
+&lt;span class="btn btn-secondary" <strong>ng-click="tooltip=!tooltip"</strong>&gt;Remote trigger&lt;/span&gt;</pre>
+			</div>
+		</div>
+
+		<h4 class="page-header">Create tooltips on all elements with [title] attribute</h4>
+		<button class="btn btn-secondary" title="Test">Hover me!</button>
+		<br/><br/>
+		<pre>&lt;button class="btn btn-secondary" title="Test"&gt;Hover me!&lt;/button&gt;
+-----
+directive('title', ['bsTooltipFactory', function(bsTooltipFactory){
+	return bsTooltipFactory.customBindingDirective();
+}]);</pre>
+	</section>
+	<section id="Popover">
+		<h3 class="page-header">Popover</h3>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Type</th>
+					<th>Default</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>animation</td>
+					<td>boolean</td>
+					<td>true</td>
+					<td>Apply a CSS fade transition to the popover</td>
+				</tr>
+				<tr>
+					<td>content</td>
+					<td>string</td>
+					<td>''</td>
+					<td><p>Default content value if <code>content</code> attribute isn't present.</p></td>
+				</tr>
+				<tr>
+					<td>delay</td>
+					<td>number | object</td>
+					<td>0</td>
+					<td><p>Delay showing and hiding the popover (ms)</p>
+						<p>If a number is supplied, delay is applied to both hide/show</p>
+						<p>Object structure is: <code>delay: {show: 500, hide: 100}</code></p></td>
+				</tr>
+				<tr>
+					<td>html</td>
+					<td>boolean</td>
+					<td>false</td>
+					<td>Allow HTML in the popover title/content.</td>
+				</tr>
+				<tr>
+					<td>placement</td>
+					<td>string</td>
+					<td>'right'</td>
+					<td><p>How to position the popover - top | bottom | left | right | auto.
+						<br>When "auto" is specified, it will dynamically reorient the popover. For example, if
+						placement is "auto left", the popover will display to the left when possible, otherwise it
+						will display right.</p></td>
+				</tr>
+				<tr>
+					<td>title</td>
+					<td>string</td>
+					<td>''</td>
+					<td><p>Default title value if <code>title</code> attribute isn't present.</p></td>
+				</tr>
+				<tr>
+					<td>trigger</td>
+					<td>string</td>
+					<td>'click'</td>
+					<td>How popover is triggered - click | hover | focus. You may pass multiple triggers; separate
+						them with a space.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<h4 class="page-header">Static popover</h4>
+		<div class="bs-example-popover">
+			<bs-popover placement="top">
+				<bs-popover-title>Popover top</bs-popover-title>
+				<bs-popover-content>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem
+					lacinia quam venenatis vestibulum.
+				</bs-popover-content>
+			</bs-popover>
+			<bs-popover placement="right">
+				<bs-popover-title>Popover right</bs-popover-title>
+				<bs-popover-content>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem
+					lacinia quam venenatis vestibulum.
+				</bs-popover-content>
+			</bs-popover>
+			<bs-popover placement="bottom">
+				<bs-popover-title>Popover bottom</bs-popover-title>
+				<bs-popover-content>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem
+					lacinia quam venenatis vestibulum.
+				</bs-popover-content>
+			</bs-popover>
+			<bs-popover placement="left">
+				<bs-popover-title>Popover left</bs-popover-title>
+				<bs-popover-content>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem
+					lacinia quam venenatis vestibulum.
+				</bs-popover-content>
+			</bs-popover>
+			<div class="clearfix"></div>
+		</div>
+		<br/>
+		<pre>&lt;bs-popover placement="top"&gt;
+	&lt;bs-popover-title&gt;Popover top&lt;/bs-popover-title&gt;
+	&lt;bs-popover-content&gt;Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem
+		lacinia quam venenatis vestibulum.
+	&lt;/bs-popover-content&gt;
+&lt;/bs-popover&gt;</pre>
+
+		<h4 class="page-header">Four directions</h4>
+		<div class="text-center">
+		<span class="btn btn-secondary" bs-popover-toggle="test"
+			  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+			  placement="left">Popover on left</span>
+		<span class="btn btn-secondary" bs-popover-toggle
+			  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+			  placement="top">Popover on top</span>
+		<span class="btn btn-secondary" bs-popover-toggle
+			  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+			  placement="bottom">Popover on bottom</span>
+		<span class="btn btn-secondary" bs-popover-toggle
+			  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+			  placement="right">Popover on right</span>
+		</div>
+		<br/>
+		<pre>&lt;span class="btn btn-secondary" <strong>bs-popover-toggle content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." placement="left"</strong>&gt;Popover on left&lt;/span&gt;
+&lt;span class="btn btn-secondary" <strong>bs-popover-toggle content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." placement="top"</strong>&gt;Popover on top&lt;/span&gt;
+&lt;span class="btn btn-secondary" <strong>bs-popover-toggle content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." placement="bottom"</strong>&gt;Popover on bottom&lt;/span&gt;
+&lt;span class="btn btn-secondary" <strong>bs-popover-toggle content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." placement="right"</strong>&gt;Popover on right&lt;/span&gt;</pre>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h4 class="page-header">Auto placement & boundary element</h4>
+				<p class="help-block">Popover will be adjusted to display within boundary element (red border)</p>
+				<div bs-popover-boundary>
+					<span class="btn btn-secondary" bs-popover-toggle title="title"
+						  placement="left auto">Popover auto</span>
+				</div>
+				<br/>
+				<pre>&lt;div <strong>bs-tooltip-boundary</strong>&gt;
+	&lt;span class="btn btn-secondary" bs-tooltip
+		title="title" placement="<strong>left auto</strong>"&gt;
+		Popover auto
+	&lt;/span&gt;
+&lt;/div&gt;</pre>
+			</div>
+			<div class="col-md-6">
+				<h4 class="page-header">Different trigger types</h4>
+				<span class="btn btn-secondary" bs-popover-toggle trigger="focus" placement="bottom"
+					  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Popover on focus</span>
+				<span class="btn btn-secondary" bs-popover-toggle="popover" trigger="hover" placement="bottom"
+					  content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Popover on hover</span>
+				<span class="btn btn-secondary" ng-click="popover=!popover">Remote trigger</span>
+				<br/><br/>
+				<pre>&lt;span class="btn btn-secondary" bs-popover-toggle <strong>trigger="focus"</strong>...&gt;
+	Popover on focus
+&lt;/span&gt;
+&lt;span class="btn btn-secondary" bs-popover-toggle="popover" <strong>trigger="hover"</strong>...&gt;
+	Popover on hover
+&lt;/span&gt;
+&lt;span class="btn btn-secondary" <strong>ng-click="popover=!popover"</strong>...&gt;
+	Remote trigger
+&lt;/span&gt;</pre>
+			</div>
+		</div>
+	</section>
+	<section id="Collapse">
+		<h3 class="page-header">Collapse</h3>
+		<div class="alert alert-warning">Collapse plugin requires ngAnimate to properly display collapse animations!
+		</div>
+		<p><button class="btn btn-outline-primary" ng-click="collapse=!collapse">Toggle collapse</button></p>
+		<div bs-collapse="collapse">
+			<div class="card card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+				squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+			</div>
+		</div>
+		<br/>
+		<pre>&lt;span class="btn btn-primary" <strong>ng-click="collapse=!collapse"</strong>&gt;Toggle collapse&lt;/span&gt;
+&lt;div <strong>bs-collapse="collapse"</strong>&gt;
+	&lt;div class="well"&gt;
+		Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+		Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+
+		<h4 class="page-header">Accordion example</h4>
+		<div class="accordion" bs-collapse-group>
+			<div class="card">
+				<div class="card-header">
+					<h2 class="mb-0">
+						<button class="btn btn-link" role="button" ng-click="tab1=!tab1">
+							Collapsible Group Item #1
+						</button>
+					</h2>
+				</div>
+				<div id="collapseOne" bs-collapse="tab1">
+					<div class="card-body">
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+						3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+						laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+						coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
+						anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+						occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
+						of them accusamus labore sustainable VHS.
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<h2 class="mb-0" ng-init="tab2=true">
+						<button class="btn btn-link" ng-click="tab2=!tab2">
+							Collapsible Group Item #2
+						</button>
+					</h2>
+				</div>
+				<div id="collapseTwo" class="panel-collapse" bs-collapse="tab2">
+					<div class="card-body">
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+						3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+						laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+						coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
+						anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+						occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
+						of them accusamus labore sustainable VHS.
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="card-header">
+					<h2 class="mb-0" ng-init="tab3=true">
+						<button class="btn btn-link" ng-click="tab3=!tab3">
+							Collapsible Group Item #3
+						</button>
+					</h2>
+				</div>
+				<div id="collapseThree" class="panel-collapse" bs-collapse="tab3">
+					<div class="card-body">
+						Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+						3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
+						laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+						coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes
+						anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
+						occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard
+						of them accusamus labore sustainable VHS.
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<pre>&lt;div class="panel-group" <strong>bs-collapse-group</strong>&gt;
+	&lt;div class="panel panel-default"&gt;
+		&lt;div class="panel-heading"&gt;
+			&lt;h4 class="panel-title"&gt;
+				&lt;a role="button" <strong>ng-click="tab1=!tab1"</strong>&gt;
+					Collapsible Group Item #1
+				&lt;/a&gt;
+			&lt;/h4&gt;
+		&lt;/div&gt;
+		&lt;div id="collapseOne" class="panel-collapse" <strong>bs-collapse="tab1"</strong>&gt;
+			&lt;div class="panel-body"&gt;...&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="panel panel-default"&gt;
+		&lt;div class="panel-heading"&gt;
+			&lt;h4 class="panel-title" ng-init="tab2=true"&gt;
+				&lt;a class="collapsed" <strong>ng-click="tab2=!tab2"</strong>&gt;
+					Collapsible Group Item #2
+				&lt;/a&gt;
+			&lt;/h4&gt;
+		&lt;/div&gt;
+		&lt;div id="collapseTwo" class="panel-collapse" <strong>bs-collapse="tab2"</strong>&gt;
+			&lt;div class="panel-body"&gt;...&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="panel panel-default"&gt;
+		&lt;div class="panel-heading"&gt;
+			&lt;h4 class="panel-title" ng-init="tab3=true"&gt;
+				&lt;a class="collapsed" <strong>ng-click="tab3=!tab3"</strong>&gt;
+					Collapsible Group Item #3
+				&lt;/a&gt;
+			&lt;/h4&gt;
+		&lt;/div&gt;
+		&lt;div id="collapseThree" class="panel-collapse" <strong>bs-collapse="tab3"</strong>&gt;
+			&lt;div class="panel-body"&gt;...&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</pre>
+	</section>
+	<section id="Carousel">
+		<h3 class="page-header">Carousel</h3>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>type</th>
+					<th>default</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>interval</td>
+					<td>number</td>
+					<td>5000</td>
+					<td>The amount of time to delay between automatically cycling an item. If false, carousel will not
+						automatically cycle.
+					</td>
+				</tr>
+				<tr>
+					<td>pause</td>
+					<td>string | null</td>
+					<td>"hover"</td>
+					<td>If set to <code>"hover"</code>, pauses the cycling of the carousel on <code>mouseenter</code>
+						and resumes the cycling of the carousel on <code>mouseleave</code>. If set to <code>null</code>,
+						hovering over the carousel won't pause it.
+					</td>
+				</tr>
+				<tr>
+					<td>wrap</td>
+					<td>boolean</td>
+					<td>true</td>
+					<td>Whether the carousel should cycle continuously or have hard stops.</td>
+				</tr>
+				<tr>
+					<td>keyboard</td>
+					<td>boolean</td>
+					<td>true</td>
+					<td>
+						Whether the carousel should react to keyboard events.
+						You need to set a <code>tabindex</code> attribute on carousel for this to work.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-11 col-lg-9 col-lg-push-1">
+				<div class="carousel" bs-carousel tabindex="0">
+					<bs-carousel-indicators></bs-carousel-indicators>
+					<div class="carousel-inner">
+						<div class="carousel-item" bs-carousel-item>
+							<img alt="First slide [900x500]"
+								 src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNzc3OiM1NTUvdGV4dDpGaXJzdCBzbGlkZQpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE2Njg3MWNkZWRlIHRleHQgeyBmaWxsOiM1NTU7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTY2ODcxY2RlZGUiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjNzc3Ii8+PGc+PHRleHQgeD0iMzA4IiB5PSIyNzAuNCI+Rmlyc3Qgc2xpZGU8L3RleHQ+PC9nPjwvZz48L3N2Zz4="/>
+						</div>
+						<div class="carousel-item" bs-carousel-item>
+							<img alt="Second slide [900x500]"
+								 src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNjY2OiM0NDQvdGV4dDpTZWNvbmQgc2xpZGUKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNjY4YjJjZmYxNyB0ZXh0IHsgZmlsbDojNDQ0O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE2NjhiMmNmZjE3Ij48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiIvPjxnPjx0ZXh0IHg9IjI2NC41IiB5PSIyNzAuNCI+U2Vjb25kIHNsaWRlPC90ZXh0PjwvZz48L2c+PC9zdmc+"/>
+						</div>
+						<div class="carousel-item" bs-carousel-item>
+							<img alt="Third slide [900x500]"
+								 src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNTU1OiMzMzMvdGV4dDpUaGlyZCBzbGlkZQpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE2NjhiMmQxNmJiIHRleHQgeyBmaWxsOiMzMzM7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTY2OGIyZDE2YmIiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjNTU1Ii8+PGc+PHRleHQgeD0iMjk3LjUiIHk9IjI3MC40Ij5UaGlyZCBzbGlkZTwvdGV4dD48L2c+PC9nPjwvc3ZnPg=="/>
+						</div>
+					</div>
+					<a href="javascript:" class="carousel-control-prev" bs-carousel-nav="left">
+						<span class="carousel-control-prev-icon"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a href="javascript:" class="carousel-control-next" bs-carousel-nav="right">
+						<span class="carousel-control-next-icon"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<pre>&lt;div class="carousel" <strong>bs-carousel tabindex="0"</strong>&gt;
+	<strong>&lt;bs-carousel-indicators&gt;&lt;/bs-carousel-indicators&gt;</strong>
+	&lt;div class="carousel-inner"&gt;
+		&lt;div class="item" <strong>bs-carousel-item</strong>&gt;
+			&lt;img alt="..." src="..."/&gt;
+		&lt;/div&gt;
+		&lt;div class="item" <strong>bs-carousel-item</strong>&gt;
+			&lt;img alt="..." src="..."/&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;a href="#" class="left carousel-control" <strong>bs-carousel-nav="left"</strong>&gt;
+		&lt;span class="glyphicon glyphicon-chevron-left"&gt;&lt;/span&gt;
+		&lt;span class="sr-only"&gt;Previous&lt;/span&gt;
+	&lt;/a&gt;
+	&lt;a href="#" class="right carousel-control" <strong>bs-carousel-nav="right"</strong>&gt;
+		&lt;span class="glyphicon glyphicon-chevron-right"&gt;&lt;/span&gt;
+		&lt;span class="sr-only"&gt;Next&lt;/span&gt;
+	&lt;/a&gt;
+&lt;/div&gt;</pre>
+	</section>
+</div>
+<script type="text/javascript" src="../node_modules/angular/angular.min.js"></script>
+<script type="text/javascript" src="../node_modules/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="../dist/angularjs-bootstrap-4.js"></script>
+<script type="text/javascript" src="example.js"></script>
+</body>
+</html>
