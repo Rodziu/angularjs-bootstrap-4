@@ -55,7 +55,7 @@
 								removeClass: 'show',
 								to: {height: '0'}
 							}).start()['finally'](() => {
-								$element.css({height: 0});
+								$element.css({height: null});
 								$element.removeClass('collapsing').addClass('collapse');
 							});
 						}
@@ -64,10 +64,10 @@
 				 */
 				ctrl.$onInit = function(){
 					if(ctrl.bsCollapse){
-						$element.removeClass('in collapsing').addClass('collapse');
-						$element.css({height: 0});
+						$element.removeClass('show collapsing').addClass('collapse');
+						$element.css({height: null});
 					}else{
-						$element.removeClass('collapsing').addClass('collapse in');
+						$element.removeClass('collapsing').addClass('collapse show');
 					}
 				};
 				/**

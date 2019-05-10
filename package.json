@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Twitter Bootstrap 4 plugin for AngularJS.",
   "main": "dist/js/angularjs-bootstrap-4.js",
-  "repository": "git+ssh://git@bitbucket.org/Rodziu/angular-bootstrap.git",
+  "repository": "https://github.com/Rodziu/angularjs-bootstrap-4",
   "author": "Mateusz Rohde <mateusz.rohde@gmail.com>",
   "license": "MIT",
   "homepage": "https://mateuszrohde.pl/repository/angularjs-bootstrap-4",
