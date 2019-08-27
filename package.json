@@ -1,6 +1,6 @@
 {
   "name": "angularjs-bootstrap-4",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Twitter Bootstrap 4 plugin for AngularJS.",
   "main": "dist/js/angularjs-bootstrap-4.js",
   "repository": "https://github.com/Rodziu/angularjs-bootstrap-4",
@@ -16,6 +16,7 @@
     "eslint": "^5.16.0",
     "eslint-config-angular": "^0.5.0",
     "eslint-plugin-angular": "^4.0.0",
+    "eslint-utils": "^1.4.1",
     "gulp": "^4.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-eslint": "^5.0.0",
