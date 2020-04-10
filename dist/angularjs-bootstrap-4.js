@@ -45,6 +45,16 @@ angular.module('angularBS', [
  */
 !function(){
 	'use strict';
+	angular.module('angularBS.modal', []);
+}();
+
+/*
+ * Twitter Bootstrap plugin for AngularJS.
+ * Copyright (c) 2016-2019 Rodziu <mateusz.rohde@gmail.com>
+ * License: MIT
+ */
+!function(){
+	'use strict';
 	/**
 	 * angularBS Service
 	 */
@@ -230,16 +240,6 @@ angular.module('angularBS', [
 		};
 		return angularBS;
 	}]);
-}();
-
-/*
- * Twitter Bootstrap plugin for AngularJS.
- * Copyright (c) 2016-2019 Rodziu <mateusz.rohde@gmail.com>
- * License: MIT
- */
-!function(){
-	'use strict';
-	angular.module('angularBS.modal', []);
 }();
 
 /*
@@ -740,7 +740,7 @@ angular.module('angularBS', [
 							return;
 						}
 						if(e.which === 38 || e.which === 40){
-							const items = $element[0].querySelectorAll('.dropdown-menu li:not(.disabled) a');
+							const items = $element[0].querySelectorAll('.dropdown-menu a:not(.disabled)');
 							let idx = -1;
 							for(let i = 0; i < items.length; i++){
 								if(items[i].contains(e.target)){

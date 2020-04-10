@@ -29,7 +29,7 @@
 							return;
 						}
 						if(e.which === 38 || e.which === 40){
-							const items = $element[0].querySelectorAll('.dropdown-menu li:not(.disabled) a');
+							const items = $element[0].querySelectorAll('.dropdown-menu a:not(.disabled)');
 							let idx = -1;
 							for(let i = 0; i < items.length; i++){
 								if(items[i].contains(e.target)){
