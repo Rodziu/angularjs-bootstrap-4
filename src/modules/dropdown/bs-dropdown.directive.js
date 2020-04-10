@@ -71,10 +71,10 @@
 				 */
 				ctrl.$onDestroy = function(){
 					$document.off('click', onClick);
-					$document.off('keydown', keydown);
+					$element.off('keydown', keydown);
 				};
 				$document.on('click', onClick);
-				$document.on('keydown', keydown);
+        $element.on('keydown', keydown);
 			}]
 		};
 	}
