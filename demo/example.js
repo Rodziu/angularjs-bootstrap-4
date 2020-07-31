@@ -9,7 +9,12 @@ angular.module('exampleApp', ['angularBS', 'ngAnimate']).controller('exampleCtrl
 	$rootScope.modal = {
 		exampleModal: false,
 		nestedModal: false,
-		backdrop: 'static'
+		backdrop: 'static',
+		keyboard: false,
+		preventModalOpen: false,
+		beforeChange: function() {
+			return !$rootScope.modal.preventModalOpen;
+		}
 	};
 
 	$rootScope.title = 'title<br/><strong>second line</strong>';

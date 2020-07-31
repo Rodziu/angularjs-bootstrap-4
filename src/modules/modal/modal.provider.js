@@ -13,7 +13,8 @@
             backdrop: 'static',
             keyboard: true,
             transitionDuration: 300,
-            backdropTransitionDuration: 150
+            backdropTransitionDuration: 150,
+            onBeforeChange: angular.noop
         };
         Modal.backdropController = null;
         // noinspection JSUnusedGlobalSymbols

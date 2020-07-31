@@ -81,8 +81,13 @@
 						<input type="checkbox" ng-model="modal.keyboard"/> keyboard
 					</label>
 				</div>
-				<div class="modal fade" data-bs-modal="modal.exampleModal" data-backdrop="{{modal.backdrop}}"
-					 data-keyboard="{{modal.keyboard}}">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" ng-model="modal.preventModalOpen"/> preventModalOpen
+					</label>
+				</div>
+				<div class="modal fade" data-bs-modal="modal.exampleModal" data-backdrop="modal.backdrop"
+					 data-keyboard="modal.keyboard" on-before-change="modal.beforeChange()">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -147,6 +152,13 @@
 							<td>boolean</td>
 							<td>true</td>
 							<td>Closes the modal when escape key is pressed</td>
+						</tr>
+						<tr>
+							<td>onBeforeChange</td>
+							<td>function</td>
+							<td>undefined</td>
+							<td>Function that gets called before every change of modal state.
+								If this function returns true, action is prevented.</td>
 						</tr>
 					</tbody>
 					<tfoot>
