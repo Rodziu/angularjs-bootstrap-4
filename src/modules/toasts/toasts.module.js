@@ -4,7 +4,7 @@
  * License: MIT
  */
 
-!function(){
-	'use strict';
-	angular.module('angularBS.toasts', []);
-}();
+!(function() {
+    'use strict';
+    angular.module('angularBS.toasts', []);
+}());

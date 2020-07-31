@@ -4,24 +4,24 @@
  * License: MIT
  */
 
-!function(){
-	'use strict';
-	/**
+!(function() {
+    'use strict';
+    /**
 	 * @ngdoc directive
 	 * @name bsCarouselNav
 	 * @param {string} bsCarouselNav
 	 */
-	angular.module('angularBS.carousel').directive('bsCarouselNav', [function(){
-		// noinspection JSUnusedGlobalSymbols
-		return {
-			restrict: 'A',
-			require: '^bsCarousel',
-			link: function(scope, element, attrs, ctrl){
-				element.on('click', function(){
-					ctrl.prevNextSlide(attrs['bsCarouselNav'] === 'right');
-					scope.$digest();
-				});
-			}
-		};
-	}]);
-}();
+    angular.module('angularBS.carousel').directive('bsCarouselNav', [function() {
+        // noinspection JSUnusedGlobalSymbols
+        return {
+            restrict: 'A',
+            require: '^bsCarousel',
+            link: function(scope, element, attrs, ctrl) {
+                element.on('click', function() {
+                    ctrl.prevNextSlide(attrs['bsCarouselNav'] === 'right');
+                    scope.$digest();
+                });
+            }
+        };
+    }]);
+}());

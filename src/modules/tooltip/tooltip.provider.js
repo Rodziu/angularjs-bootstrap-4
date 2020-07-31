@@ -4,23 +4,23 @@
  * License: MIT
  */
 
-!function(){
-	'use strict';
-	/**
+!(function() {
+    'use strict';
+    /**
 	 * Tooltip default configuration
 	 */
-	angular.module('angularBS.tooltip').provider('Tooltip', function(){
-		this.config = {
-			animation: true,
-			delay: 0,
-			placement: 'bottom',
-			html: false,
-			title: "",
-			trigger: 'hover focus'
-		};
-		// noinspection JSUnusedGlobalSymbols
-		this.$get = function(){
-			return this.config;
-		};
-	});
-}();
+    angular.module('angularBS.tooltip').provider('Tooltip', function() {
+        this.config = {
+            animation: true,
+            delay: 0,
+            placement: 'bottom',
+            html: false,
+            title: '',
+            trigger: 'hover focus'
+        };
+        // noinspection JSUnusedGlobalSymbols
+        this.$get = function() {
+            return this.config;
+        };
+    });
+}());

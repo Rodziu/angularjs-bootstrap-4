@@ -4,26 +4,26 @@
  * License: MIT
  */
 
-!function(){
-	'use strict';
+!(function() {
+    'use strict';
 
-	function dismissDirectiveController(){
-		// noinspection JSUnusedGlobalSymbols
-		return {
-			restrict: 'A',
-			require: '^bsModal',
-			link: function(scope, element, attrs, bsModal){
-				element.on('click', function(){
-					bsModal.bsModal = false;
-					bsModal.$scope.$digest();
-				});
-			}
-		};
-	}
+    function dismissDirectiveController() {
+        // noinspection JSUnusedGlobalSymbols
+        return {
+            restrict: 'A',
+            require: '^bsModal',
+            link: function(scope, element, attrs, bsModal) {
+                element.on('click', function() {
+                    bsModal.bsModal = false;
+                    bsModal.$scope.$digest();
+                });
+            }
+        };
+    }
 
-	/**
+    /**
 	 * @ngdoc directive
 	 * @name dismiss
 	 */
-	angular.module('angularBS.modal').directive('dismiss', dismissDirectiveController);
-}();
+    angular.module('angularBS.modal').directive('dismiss', dismissDirectiveController);
+}());

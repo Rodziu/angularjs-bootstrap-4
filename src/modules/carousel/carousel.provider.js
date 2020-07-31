@@ -4,21 +4,21 @@
  * License: MIT
  */
 
-!function(){
-	'use strict';
-	/**
+!(function() {
+    'use strict';
+    /**
 	 * Carousel config
 	 */
-	angular.module('angularBS.carousel').provider('Carousel', function(){
-		this.config = {
-			interval: 5000,
-			pause: 'hover',
-			wrap: true,
-			keyboard: true
-		};
-		// noinspection JSUnusedGlobalSymbols
-		this.$get = function(){
-			return this.config;
-		};
-	});
-}();
+    angular.module('angularBS.carousel').provider('Carousel', function() {
+        this.config = {
+            interval: 5000,
+            pause: 'hover',
+            wrap: true,
+            keyboard: true
+        };
+        // noinspection JSUnusedGlobalSymbols
+        this.$get = function() {
+            return this.config;
+        };
+    });
+}());

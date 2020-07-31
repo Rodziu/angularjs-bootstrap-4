@@ -4,6 +4,6 @@
  * License: MIT
  */
 angular.module('angularBS', [
-	'angularBS.modal', 'angularBS.dropdown', 'angularBS.tooltip', 'angularBS.popover', 'angularBS.collapse',
-	'angularBS.carousel', 'angularBS.toasts'
+    'angularBS.modal', 'angularBS.dropdown', 'angularBS.tooltip', 'angularBS.popover', 'angularBS.collapse',
+    'angularBS.carousel', 'angularBS.toasts'
 ]);

@@ -4,26 +4,26 @@
  * License: MIT
  */
 
-!function(){
-	'use strict';
+!(function() {
+    'use strict';
 
-	function modalProvider(){
-		const Modal = this;
-		Modal.config = {
-			backdrop: 'static',
-			keyboard: true,
-			transitionDuration: 300,
-			backdropTransitionDuration: 150
-		};
-		Modal.backdropController = null;
-		// noinspection JSUnusedGlobalSymbols
-		Modal.$get = function(){
-			return Modal;
-		};
-	}
+    function modalProvider() {
+        const Modal = this;
+        Modal.config = {
+            backdrop: 'static',
+            keyboard: true,
+            transitionDuration: 300,
+            backdropTransitionDuration: 150
+        };
+        Modal.backdropController = null;
+        // noinspection JSUnusedGlobalSymbols
+        Modal.$get = function() {
+            return Modal;
+        };
+    }
 
-	/**
+    /**
 	 * Modal default configuration
 	 */
-	angular.module('angularBS.modal').provider('Modal', modalProvider);
-}();
+    angular.module('angularBS.modal').provider('Modal', modalProvider);
+}());

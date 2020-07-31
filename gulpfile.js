@@ -19,10 +19,10 @@
 			'src/**/*.module.js',
 			'src/**/*.js'
 		])
-			.pipe(ngAnnotate())
 			.pipe(eslint())
 			.pipe(eslint.format())
 			.pipe(eslint.failOnError())
+			.pipe(ngAnnotate())
 			.pipe(concat('angularjs-bootstrap-4.js'))
 			.pipe(gulp.dest('dist'))
 			.pipe(rename('angularjs-bootstrap-4.min.js'))
@@ -31,6 +31,16 @@
 			.pipe(sourcemaps.write('./', {includeContent: false}))
 			.pipe(gulp.dest('dist'));
 	}
+
+	gulp.task('js', jsTask);
+
+	gulp.task('watch', function() {
+		[
+			['src/**/*.js', 'js']
+		].forEach(([src, task]) => {
+			gulp.watch(src, {}, gulp.series(task));
+		});
+	});
 
 	//
 	exports.default = jsTask;

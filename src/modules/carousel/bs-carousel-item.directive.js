@@ -4,26 +4,26 @@
  * License: MIT
  */
 
-!function(){
-	'use strict';
-	/**
+!(function() {
+    'use strict';
+    /**
 	 * @ngdoc directive
 	 * @name bsCarouselItem
 	 */
-	angular.module('angularBS.carousel').directive('bsCarouselItem', [function(){
-		// noinspection JSUnusedGlobalSymbols
-		return {
-			restrict: 'A',
-			require: '^bsCarousel',
-			link: function(scope, element, attrs, ctrl){
-				ctrl.register(element);
-			},
-			controller: ['$element', function($element){
-				const ctrl = this;
-				ctrl.$onInit = function(){
-					$element.addClass('carousel-item');
-				};
-			}]
-		};
-	}]);
-}();
+    angular.module('angularBS.carousel').directive('bsCarouselItem', [function() {
+        // noinspection JSUnusedGlobalSymbols
+        return {
+            restrict: 'A',
+            require: '^bsCarousel',
+            link: function(scope, element, attrs, ctrl) {
+                ctrl.register(element);
+            },
+            controller: ['$element', function($element) {
+                const ctrl = this;
+                ctrl.$onInit = function() {
+                    $element.addClass('carousel-item');
+                };
+            }]
+        };
+    }]);
+}());

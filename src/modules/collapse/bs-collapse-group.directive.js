@@ -4,41 +4,41 @@
  * License: MIT
  */
 
-!function(){
-	'use strict';
-	/**
+!(function() {
+    'use strict';
+    /**
 	 * @ngdoc directive
 	 * @name bsCollapseGroup
 	 */
-	angular.module('angularBS.collapse').directive('bsCollapseGroup', [function(){
-		return {
-			restrict: 'A',
-			controller: [function(){
-				const ctrl = this,
-					children = [];
-				/**
+    angular.module('angularBS.collapse').directive('bsCollapseGroup', [function() {
+        return {
+            restrict: 'A',
+            controller: [function() {
+                const ctrl = this,
+                    children = [];
+                /**
 				 * @param bsCollapseCtrl
 				 */
-				ctrl.register = function(bsCollapseCtrl){
-					children.push(bsCollapseCtrl);
-				};
-				/**
+                ctrl.register = function(bsCollapseCtrl) {
+                    children.push(bsCollapseCtrl);
+                };
+                /**
 				 * @param bsCollapseCtrl
 				 */
-				ctrl.unregister = function(bsCollapseCtrl){
-					children.splice(children.indexOf(bsCollapseCtrl), 1);
-				};
-				/**
+                ctrl.unregister = function(bsCollapseCtrl) {
+                    children.splice(children.indexOf(bsCollapseCtrl), 1);
+                };
+                /**
 				 * @param invokingCtrl
 				 */
-				ctrl.expand = function(invokingCtrl){
-					for(let c = 0; c < children.length; c++){
-						if(children[c] !== invokingCtrl){
-							children[c].bsCollapse = true;
-						}
-					}
-				};
-			}]
-		};
-	}]);
-}();
+                ctrl.expand = function(invokingCtrl) {
+                    for (let c = 0; c < children.length; c++) {
+                        if (children[c] !== invokingCtrl) {
+                            children[c].bsCollapse = true;
+                        }
+                    }
+                };
+            }]
+        };
+    }]);
+}());

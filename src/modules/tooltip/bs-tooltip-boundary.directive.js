@@ -4,19 +4,19 @@
  * License: MIT
  */
 
-!function(){
-	'use strict';
-	/**
+!(function() {
+    'use strict';
+    /**
 	 * @ngdoc directive
 	 * @name bsTooltipBoundary
 	 */
-	angular.module('angularBS.tooltip').directive('bsTooltipBoundary', [function(){
-		// noinspection JSUnusedGlobalSymbols
-		return {
-			restrict: 'A',
-			controller: ['$element', function($element){
-				this.$element = $element;
-			}]
-		};
-	}]);
-}();
+    angular.module('angularBS.tooltip').directive('bsTooltipBoundary', [function() {
+        // noinspection JSUnusedGlobalSymbols
+        return {
+            restrict: 'A',
+            controller: ['$element', function($element) {
+                this.$element = $element;
+            }]
+        };
+    }]);
+}());

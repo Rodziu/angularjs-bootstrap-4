@@ -4,18 +4,18 @@
  * License: MIT
  */
 
-!function(){
-	'use strict';
+!(function() {
+    'use strict';
 
-	function toastsProvider(){
-		this.config = {
-			animation: true
-		};
+    function toastsProvider() {
+        this.config = {
+            animation: true
+        };
 
-		this.$get = function(){
-			return this.config;
-		};
-	}
+        this.$get = function() {
+            return this.config;
+        };
+    }
 
-	angular.module('angularBS.toasts').provider('Toasts', toastsProvider);
-}();
+    angular.module('angularBS.toasts').provider('Toasts', toastsProvider);
+}());
