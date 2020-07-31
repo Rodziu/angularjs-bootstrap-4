@@ -1,6 +1,6 @@
 {
   "name": "angularjs-bootstrap-4",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Twitter Bootstrap 4 plugin for AngularJS.",
   "main": "dist/js/angularjs-bootstrap-4.js",
   "scripts": {
