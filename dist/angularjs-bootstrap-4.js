@@ -878,8 +878,8 @@ angular.module('angularBS', [
 !(function() {
     'use strict';
 
-    bsModalController.$inject = ["$scope", "$element", "$attrs", "$timeout", "$document", "$q", "Modal", "ModalBackdrop"];
-    function bsModalController($scope, $element, $attrs, $timeout, $document, $q, Modal, ModalBackdrop) {
+    bsModalController.$inject = ["$scope", "$element", "$attrs", "$timeout", "$document", "$q", "$injector", "Modal", "ModalBackdrop"];
+    function bsModalController($scope, $element, $attrs, $timeout, $document, $q, $injector, Modal, ModalBackdrop) {
         let backdrop = Modal.config.backdrop;
         const ctrl = this,
             show = function() {
@@ -936,7 +936,7 @@ angular.module('angularBS', [
             if (_isOpen !== ctrl.bsModal) {
                 let ret = ctrl.onBeforeChange({bsModalController: ctrl});
                 if (ret !== false) {
-                    ret = Modal.config.onBeforeChange(ctrl);
+                    ret = Modal.config.onBeforeChange(ctrl, $injector);
                 }
                 if (ret !== false) {
                     _isOpen = ctrl.bsModal;
