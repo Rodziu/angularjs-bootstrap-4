@@ -31,7 +31,7 @@
                                     scope, element, attrs, [ctrl, bsTooltipToggleCtrl]
                                 );
                                 bsTooltipToggleCtrl.$onInit();
-                                scope.$on('$destroy', function() {
+                                element.on('$destroy', function() {
                                     bsTooltipToggleCtrl.$onDestroy();
                                 });
                             }
