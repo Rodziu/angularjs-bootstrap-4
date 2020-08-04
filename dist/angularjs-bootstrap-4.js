@@ -929,7 +929,6 @@ angular.module('angularBS', [
             if (angular.isUndefined(ctrl.keyboard)) {
                 ctrl.keyboard = Modal.config.keyboard;
             }
-            _isOpen = ctrl.bsModal;
         };
 
         ctrl.$doCheck = function() {
