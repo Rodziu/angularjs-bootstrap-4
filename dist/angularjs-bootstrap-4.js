@@ -931,6 +931,12 @@ angular.module('angularBS', [
             }
         };
 
+        ctrl.$onChanges = function(changes) {
+            if ('backdrop' in changes) {
+                backdrop = this.backdrop === 'static' ? 'static' : this.backdrop;
+            }
+        };
+
         ctrl.$doCheck = function() {
             if (_isOpen !== ctrl.bsModal) {
                 let ret = ctrl.onBeforeChange({bsModalController: ctrl});
@@ -957,12 +963,11 @@ angular.module('angularBS', [
             }
             $document.off('keydown', keydown);
         };
-        //
-        $attrs.$observe('backdrop', function(value) {
-            backdrop = value === 'static' ? 'static' : !(value === 'false' || !value);
-        });
         // backdrop click
         $element.on('click', function(e) {
+            if (window.getSelection().type === 'Range') {
+                return;
+            }
             if (backdrop === true && e.target === $element[0]) { // .modal covers whole page
                 ctrl.bsModal = false;
                 $scope.$digest();
@@ -978,6 +983,7 @@ angular.module('angularBS', [
             bindToController: {
                 bsModal: '=',
                 keyboard: '<?',
+                backdrop: '<?',
                 onBeforeChange: '&'
             },
             controller: bsModalController
