@@ -8,14 +8,14 @@
     'use strict';
 
     function bsDropdownToggleDirectiveController() {
-        // noinspection JSUnusedGlobalSymbols
         return {
             restrict: 'A',
             require: '^bsDropdown',
             link: function(scope, element, attrs, dropdownCtrl) {
-                element.on('click', function() {
-                    dropdownCtrl.bsDropdown = !dropdownCtrl.bsDropdown;
-                    scope.$digest();
+                element.on('click', () => {
+                    scope.$apply(() => {
+                        dropdownCtrl.bsDropdown = !dropdownCtrl.bsDropdown;
+                    });
                 });
             }
         };
