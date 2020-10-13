@@ -15,6 +15,10 @@
         const bodyElement = $document.find('body'),
             backdropElement = angular.element('<bs-modal-backdrop ng-if="isVisible()"></bs-modal-backdrop>'),
             backdropScope = $rootScope.$new(true),
+            _doHide = () => {
+                isVisible = false;
+                bodyElement.removeClass('modal-open');
+            },
             ModalBackdrop = {
                 isVisible: function() {
                     return isVisible;
@@ -42,11 +46,12 @@
                     if (openModals < 0) {
                         openModals = 0;
                     }
-                    if (angular.isDefined(this.backdropController) && openModals === 0) {
-                        this.backdropController.hide().then(function() {
-                            isVisible = false;
-                            bodyElement.removeClass('modal-open');
-                        });
+                    if (openModals === 0) {
+                        if (angular.isDefined(this.backdropController)) {
+                            this.backdropController.hide().then(_doHide);
+                        } else {
+                            _doHide();
+                        }
                     }
                 }
             };
