@@ -19,14 +19,14 @@
                 const elemBCR = element.getBoundingClientRect(),
                     elemStyle = element['currentStyle'] || window.getComputedStyle(element);
                 return {
-                    width: Math.round(angular.isNumber(elemBCR.width) ? elemBCR.width : element.offsetWidth)
+                    width: Math.ceil(angular.isNumber(elemBCR.width) ? elemBCR.width : element.offsetWidth)
 						+ parseInt(elemStyle.getPropertyValue('margin-left'))
 						+ parseInt(elemStyle.getPropertyValue('margin-right')),
-                    height: Math.round(angular.isNumber(elemBCR.height) ? elemBCR.height : element.offsetHeight)
+                    height: Math.ceil(angular.isNumber(elemBCR.height) ? elemBCR.height : element.offsetHeight)
 						+ parseInt(elemStyle.getPropertyValue('margin-top'))
 						+ parseInt(elemStyle.getPropertyValue('margin-bottom')),
-                    top: Math.round(elemBCR.top + (window.pageYOffset || document.documentElement.scrollTop)),
-                    left: Math.round(elemBCR.left + (window.pageXOffset || document.documentElement.scrollLeft)),
+                    top: Math.ceil(elemBCR.top + (window.pageYOffset || document.documentElement.scrollTop)),
+                    left: Math.ceil(elemBCR.left + (window.pageXOffset || document.documentElement.scrollLeft)),
                 };
             },
             /**
