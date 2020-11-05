@@ -14,8 +14,9 @@
             require: '^bsModal',
             link: function(scope, element, attrs, bsModal) {
                 element.on('click', function() {
-                    bsModal.bsModal = false;
-                    bsModal.$scope.$digest();
+                    scope.$apply(() => {
+                        bsModal.hide();
+                    });
                 });
             }
         };

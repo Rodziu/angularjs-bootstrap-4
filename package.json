@@ -12,7 +12,7 @@
   "homepage": "https://mateuszrohde.pl/repository/angularjs-bootstrap-4",
   "dependencies": {
     "angular": "^1.8.0",
-    "bootstrap": "^4.3.1"
+    "bootstrap": "^4.5.3"
   },
   "devDependencies": {
     "@rodziu/gulp-ng-annotate-patched": "^1.0.0",

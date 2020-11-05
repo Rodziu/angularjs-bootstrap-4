@@ -63,7 +63,7 @@
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-outline-primary btn-lg"
-                        data-ng-click="modal.exampleModal=!modal.exampleModal">Launch demo modal
+                        data-ng-click="$root.bsModal.show()">Launch demo modal
                 </button>
                 <br/><br/>
                 <div class="radio">
@@ -92,7 +92,8 @@
                     </label>
                 </div>
                 <div class="modal fade" data-bs-modal="modal.exampleModal" data-backdrop="modal.backdrop"
-                     data-keyboard="modal.keyboard" on-before-change="modal.beforeChange()">
+                     data-keyboard="modal.keyboard" on-before-change="modal.beforeChange()"
+                     ng-init="$root.bsModal = bsModal">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -108,7 +109,7 @@
                                 </button>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-ng-click="modal.exampleModal=false">
+                                <button type="button" class="btn btn-danger" data-ng-click="bsModal.hide()">
                                     Dismiss
                                 </button>
                             </div>
@@ -178,7 +179,7 @@
                     </tfoot>
                 </table>
                 <pre>
-&lt;div class="modal fade" <strong>data-bs-modal="modal.exampleModal" data-backdrop="static" data-keyboard="false"</strong>&gt;
+&lt;div class="modal fade" <strong>data-bs-modal="modal.exampleModal" data-backdrop="'static'" data-keyboard="false"</strong>&gt;
 ...
 &lt;/div&gt;</pre>
             </div>
