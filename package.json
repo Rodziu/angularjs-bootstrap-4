@@ -2,7 +2,8 @@
   "name": "angularjs-bootstrap-4",
   "version": "1.4.0",
   "description": "Twitter Bootstrap 4 plugin for AngularJS.",
-  "main": "dist/js/angularjs-bootstrap-4.js",
+  "main": "dist/angularjs-bootstrap-4.js",
+  "types": "dist/angularjs-bootstrap-4.d.ts",
   "scripts": {
     "watch": "gulp watch"
   },
@@ -11,23 +12,29 @@
   "license": "MIT",
   "homepage": "https://mateuszrohde.pl/repository/angularjs-bootstrap-4",
   "dependencies": {
+    "@types/angular": "^1.8.0",
+    "@types/angular-animate": "^1.5.10",
     "angular": "^1.8.0",
     "bootstrap": "^4.5.3"
   },
   "devDependencies": {
     "@rodziu/gulp-ng-annotate-patched": "^1.0.0",
-    "eslint": "^5.16.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "eslint": "^7.19.0",
     "eslint-config-angular": "^0.5.0",
     "eslint-plugin-angular": "^4.0.0",
     "eslint-utils": "^1.4.1",
     "gulp": "^4.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-eslint": "^5.0.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify-es": "^1.0.4",
-    "lodash": "^4.17.19",
-    "ng-annotate-patched": "^1.9.0"
+    "gulp-eslint": "^6.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-typescript": "^5.0.1",
+    "ng-annotate-patched": "^1.9.0",
+    "source-map-loader": "^1.0.0",
+    "through2": "^4.0.2",
+    "typescript": "^4.1.3",
+    "webpack": "^5.19.0",
+    "webpack-stream": "^6.1.2"
   },
   "optionalDependencies": {
     "angular-animate": "^1.7.8"

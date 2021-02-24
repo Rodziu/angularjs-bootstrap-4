@@ -3,15 +3,22 @@
     "browser": true,
     "es6": true
   },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "extends": [
     "angular",
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2016
   },
   "rules": {
     "angular/di": 0, // ng-annotate takes care of that
+    "angular/module-setter": 0,
     "angular/service-name": 0,
     "angular/log": 0,
     "angular/timeout-service": 0,
