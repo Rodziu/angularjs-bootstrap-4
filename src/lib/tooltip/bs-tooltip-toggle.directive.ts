@@ -13,6 +13,9 @@ interface IBSTooltipScope extends IScope {
     bsTpCtrl: BsTooltipToggleDirectiveController
 }
 
+/**
+ * @ngInject
+ */
 export class BsTooltipToggleDirectiveController {
     private $scope: IScope;
     private $element: JQLite;

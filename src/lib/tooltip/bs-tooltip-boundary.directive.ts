@@ -5,6 +5,9 @@
  */
 import {IDirective} from 'angular';
 
+/**
+ * @ngInject
+ */
 class BsTooltipBoundaryDirectiveController {
     private $element: JQLite;
 

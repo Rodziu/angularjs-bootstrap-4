@@ -7,8 +7,6 @@ import * as angular from 'angular';
  * @ngInject
  */
 export declare class BSModalController {
-    private $scope;
-    private readonly $element;
     private readonly $timeout;
     private $document;
     private $injector;
@@ -17,6 +15,8 @@ export declare class BSModalController {
     private _keydownHandler;
     private _bsModal;
     private onBeforeChange;
+    $scope: IScope;
+    $element: JQLite;
     backdrop: 'static' | boolean;
     keyboard: boolean;
     bsModal: boolean;

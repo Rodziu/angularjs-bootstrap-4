@@ -16,6 +16,9 @@ import {IPopoverOptions, popoverDelay} from './popover.provider';
 import {AngularBSService, placement} from '../helpers/angularBS.service';
 import * as angular from 'angular';
 
+/**
+ * @ngInject
+ */
 class BsPopoverComponentController {
     private $scope: IScope;
     private $element: JQLite;

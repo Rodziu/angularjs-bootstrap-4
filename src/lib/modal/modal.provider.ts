@@ -12,7 +12,8 @@ interface IModalOptions {
     keyboard: boolean,
     transitionDuration: number,
     backdropTransitionDuration: number,
-    onBeforeChange: Injectable<(this: BSModalController) => boolean>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onBeforeChange: Injectable<(this: BSModalController, ...args: any[]) => boolean>
 }
 
 export class ModalProvider {

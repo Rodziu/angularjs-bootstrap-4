@@ -8,6 +8,9 @@ import IInjectorService = angular.auto.IInjectorService;
 import {IDirective} from 'angular';
 import {BsTooltipToggleDirectiveController} from './bs-tooltip-toggle.directive';
 
+/**
+ * @ngInject
+ */
 export class BsTooltipFactory {
     private $injector: IInjectorService;
 

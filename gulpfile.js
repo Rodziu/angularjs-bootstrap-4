@@ -10,30 +10,35 @@
 		ts = require('gulp-typescript'),
 		sourcemaps = require('gulp-sourcemaps'),
 		eslint = require('gulp-eslint'),
-		through2 = require('through2'),
+		ngAnnotate = require('@rodziu/gulp-ng-annotate-patched'),
+		plumber = require('gulp-plumber'),
+		log = require('fancy-log'),
+		merge = require('merge2'),
 		webpack = require('webpack'),
 		webpackStream = require('webpack-stream');
 
 	gulp.task('ts', () => {
-		const tsProject = ts.createProject('tsconfig.json');
-		return gulp.src([
+		const tsProject = ts.createProject('tsconfig.json'),
+			tsResult = gulp.src([
 			'src/**/*.ts',
 		])
 			.pipe(eslint())
 			.pipe(eslint.format())
 			.pipe(eslint.failOnError())
 			.pipe(sourcemaps.init())
-			.pipe(tsProject())
-			.pipe(sourcemaps.write())
-			.pipe(gulp.dest('.build'))
-			.pipe(through2.obj((file, enc, cb) => {
-				if (!file.basename.includes('.d.ts')) {
-					cb();
-					return;
-				}
-				cb(null, file);
-			}))
-			.pipe(gulp.dest('dist'))
+			.pipe(tsProject());
+
+		return merge([
+			tsResult.dts.pipe(gulp.dest('dist')),
+			tsResult.js
+				.pipe(plumber())
+				.pipe(ngAnnotate().on('error', (e) => {
+					log('\x1b[31mngAnnotate\x1b[0m ', e.message);
+				}))
+				.pipe(plumber.stop())
+				.pipe(sourcemaps.write())
+				.pipe(gulp.dest('.build'))
+		]);
 	});
 
 	gulp.task('bundle', () => {
@@ -51,6 +56,9 @@
 					'angularjs-bootstrap-4': './.build/angularjs-bootstrap-4.js'
 				},
 				mode: production ? 'production' : 'development',
+				externals: {
+					angular: 'angular'
+				},
 				output: {
 					devtoolNamespace: 'angularBS',
 					filename: (pathData) => {

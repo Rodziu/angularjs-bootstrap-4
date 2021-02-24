@@ -15,8 +15,6 @@ import * as angular from 'angular';
  * @ngInject
  */
 export class BSModalController {
-    private $scope: IScope;
-    private readonly $element: JQLite;
     private readonly $timeout: ITimeoutService;
     private $document: IDocumentService;
     private $injector: IInjectorService;
@@ -25,6 +23,8 @@ export class BSModalController {
     private _keydownHandler: (JQueryEventObject) => void;
     private _bsModal: boolean;
     private onBeforeChange: () => boolean;
+    public $scope: IScope;
+    public $element: JQLite;
     public backdrop: 'static' | boolean;
     public keyboard: boolean;
     public bsModal: boolean;

@@ -5,7 +5,7 @@ interface IModalOptions {
     keyboard: boolean;
     transitionDuration: number;
     backdropTransitionDuration: number;
-    onBeforeChange: Injectable<(this: BSModalController) => boolean>;
+    onBeforeChange: Injectable<(this: BSModalController, ...args: any[]) => boolean>;
 }
 export declare class ModalProvider {
     config: IModalOptions;

@@ -1,5 +1,8 @@
 import { IAttributes, ICompileService, IDirective, IDocumentService, ISCEService, IScope } from 'angular';
 import { ITooltipOptions } from './tooltip.provider';
+/**
+ * @ngInject
+ */
 export declare class BsTooltipToggleDirectiveController {
     private $scope;
     private $element;

@@ -9,11 +9,14 @@ import {ITooltipOptions, tooltipDelay} from './tooltip.provider';
 import {AngularBSService, placement} from '../helpers/angularBS.service';
 import * as angular from 'angular';
 
+/**
+ * @ngInject
+ */
 class BsTooltipComponentController {
     private $scope: IScope;
     private $element: JQLite;
     private $attrs: IAttributes;
-    private $timeout: ITimeoutService;
+    private readonly $timeout: ITimeoutService;
     private Tooltip: ITooltipOptions;
     private angularBS: AngularBSService;
     private _delay: tooltipDelay;
