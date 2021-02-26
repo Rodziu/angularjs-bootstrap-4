@@ -57,7 +57,8 @@
 				},
 				mode: production ? 'production' : 'development',
 				externals: {
-					angular: 'angular'
+					angular: 'angular',
+					'angular-animate': 'angular-animate'
 				},
 				output: {
 					devtoolNamespace: 'angularBS',
